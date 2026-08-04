@@ -1,0 +1,132 @@
+export const title = "MDX Runtime Stress Test";
+
+# {title}
+
+This document tests the **Fusion MDX runtime pipeline**.
+
+---
+
+## Basic Rendering
+
+This is a paragraph.
+
+This is another paragraph with **bold text**, _italic text_, and `inline code`.
+
+---
+
+## JSX-style elements
+
+<div>
+	<h2>Raw HTML-like JSX block</h2>
+	<p>This should render correctly through jsx runtime.</p>
+</div>
+
+---
+
+## Lists
+
+- Item 1
+- Item 2
+- Item 3 with **bold**
+	- Nested item A
+	- Nested item B
+
+---
+
+## Expressions
+
+2 + 2 = {2 + 2}
+
+Random number: {Math.random()}
+
+String concat: {"Hello " + "World"}
+
+---
+
+## Function-style logic
+
+{(() => {
+	const value = 10 * 5;
+
+	return (
+		<div>
+			<p>Computed value: {value}</p>
+		</div>
+	);
+})()}
+
+---
+
+## Table-like structure
+
+| Feature | Status |
+|--------|--------|
+| JSX | ✔ |
+| MDX | ✔ |
+| Runtime | ✔ |
+| Eval system | ✔ |
+
+---
+
+## Nested Components Stress
+
+<div>
+	<section>
+		<article>
+			<header>
+				<h3>Deep nesting test</h3>
+			</header>
+			<p>
+				If this renders correctly, your JSX runtime is stable.
+			</p>
+		</article>
+	</section>
+</div>
+
+---
+
+## Conditional rendering test
+
+{true && <p>Condition TRUE works</p>}
+{false && <p>This should NOT appear</p>}
+
+---
+
+## Array rendering test
+
+{["A", "B", "C"].map((item, i) => (
+	<div key={i}>
+		Item: {item}
+	</div>
+))}
+
+---
+
+## Hook-like stress simulation (no real hooks, just evaluation)
+
+{(() => {
+	const items = Array.from({ length: 5 }, (_, i) => i * i);
+
+	return (
+		<ul>
+			{items.map((n) => (
+				<li key={n}>Square: {n}</li>
+			))}
+		</ul>
+	);
+})()}
+
+---
+
+## Edge case: large string
+
+{"x".repeat(200)}
+
+---
+
+## Final test block
+
+<div style={{ padding: "12px", border: "1px solid #ccc" }}>
+	<strong>Final Render Check</strong>
+	<p>If you can see this styled block, your runtime pipeline is stable.</p>
+</div>
